@@ -1,0 +1,7 @@
+#container {
+    width: 35vw;
+    height: 90vh;
+    background-color: grey;
+    border-radius: 10%;
+    margin: auto;
+}
