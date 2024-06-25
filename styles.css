@@ -16,6 +16,9 @@
     background-color: #eee;
     margin-top: 10%;
     border-radius: 2%;
+    font-size: 3rem;
+    text-align: end;
+    padding: 0 10px;
 }
 
 #buttons-container {
