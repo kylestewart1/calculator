@@ -1,7 +1,53 @@
-#container {
+#frame {
     width: 35vw;
     height: 90vh;
     background-color: grey;
     border-radius: 10%;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+
+#display {
+    width: 90%;
+    height: 10%;
+    background-color: #eee;
+    margin-top: 10%;
+    border-radius: 2%;
+}
+
+#buttons-container {
+    width: 90%;
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+button {
+    width: 20%;
+    height: 20%;
+    border-radius: 10%;
+    border: none;
+    margin-bottom: 5%;
+    margin-right: 2%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #aaa;
+}
+
+.operator {
+    background-color: orange;
+}
+
+#clear {
+    background-color: red;
+}
+
+.hidden {
+    opacity: 0;
+}
+
