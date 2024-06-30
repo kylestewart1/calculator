@@ -74,7 +74,9 @@ digitButtons.forEach(btn => btn.addEventListener("click", () => {
         display.innerText += btn.value;
     }
     record += btn.value;
+    enableOperators();
     cleanDisplay();
+    console.log(record);
 }));
 
 function disableOperators() {
@@ -95,15 +97,17 @@ operatorButtons.forEach(btn => btn.addEventListener("click", () => {
     } else {
         display.innerText = "";
     }
-    record += btn.value;    
+    record += btn.value;
+    console.log(record);
 }))
 
 function evaluate() {
     const expressionMatch = record.match(expressionRegex);
-    enableOperators();
+    
     if (expressionMatch) {
         expression = expressionMatch[0];
         console.log(`expression: ${expression}`);
+        enableOperators();
         return operate(expression);
     } else {
         return null;
@@ -113,7 +117,12 @@ function evaluate() {
 
 equalsButton.addEventListener("click", () => {
     const result = evaluate();
-    display.innerText = result;
-    record = `${result}`;
+    if (result) {
+        display.innerText = result;
+        record = `${result}`;
+        console.log(`equals ${result}`);
+    } else {
+        console.log(`equals ${display.innerText}`);
+    }
     cleanDisplay();
 })
