@@ -13,8 +13,28 @@ const expressionRegex = /\d+[\+\-\*\/]\d+/;
 function clear() {
     display.innerText = "0";
     record = "";
-    enableOperators();
+    document.querySelectorAll("button").forEach(btn => btn.disabled = false);
+
 }
+
+
+function cleanDisplay() {
+    const size = display.innerText.length;
+    const value = Number(display.innerText);
+    const roundedSize = String(Math.round(value)).length;
+    if (size <= 16) {
+        return;
+    } else if (roundedSize <= 16) {
+        display.innerText = value.toFixed(size - roundedSize);
+    } else {
+        display.innerText = "Error - overflow";
+        document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+        clearButton.disabled = false;
+    }
+    
+    
+}
+
 
 function operate(expression) {
     const operatorMatch = expression.match(/[\+\-\*\/]/);
@@ -54,7 +74,7 @@ digitButtons.forEach(btn => btn.addEventListener("click", () => {
         display.innerText += btn.value;
     }
     record += btn.value;
-    console.log(record);
+    cleanDisplay();
 }));
 
 function disableOperators() {
@@ -75,9 +95,7 @@ operatorButtons.forEach(btn => btn.addEventListener("click", () => {
     } else {
         display.innerText = "";
     }
-    record += btn.value;
-    console.log(record);
-    
+    record += btn.value;    
 }))
 
 function evaluate() {
@@ -97,5 +115,5 @@ equalsButton.addEventListener("click", () => {
     const result = evaluate();
     display.innerText = result;
     record = `${result}`;
-    console.log(`equals ${result}`);
+    cleanDisplay();
 })
